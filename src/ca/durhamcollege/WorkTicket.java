@@ -77,6 +77,7 @@ public class WorkTicket {
         SetWorkTicket(number, id, day, month, year, description);
     }
 
+    //
     public WorkTicket(WorkTicket ticket)
     {
         this.ticketNumber = ticket.ticketNumber;

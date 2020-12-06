@@ -1,6 +1,15 @@
+/**
+ * @Authors: Gabriel Dietrich (100764733) and Fleur Blanckaert (100747083)
+ * @Date: Dec 06, 2020
+ * @Program: OOP3200 - Java Lab 3
+ * @Description: This is extension of the WorkTicket class in which it basically
+ *               inherits all attributes from WorkTicket and indicates if the WorkTicket
+ *               is opened or not.
+ */
+
 package ca.durhamcollege;
 
-public class ExtentedWorkTicket extends WorkTicket
+public class ExtendedWorkTicket extends WorkTicket
 {
     //PRIVATE INSTANCE VARIABLES
     private boolean myOpen;
@@ -22,30 +31,34 @@ public class ExtentedWorkTicket extends WorkTicket
         return myOpen;
     }
 
-    public void closeTicket()
+    public boolean closeTicket()
     {
-        myOpen = false;
+        return false;
     }
 
     //CONSTRUCTORS
-    ExtentedWorkTicket()
+    // Default constructor
+    ExtendedWorkTicket()
     {
         super();
         myOpen = true;
     }
 
-    ExtentedWorkTicket(int number, String id, int day, int month, int year , String description, boolean isOpen)
+    // Parameterized constructor
+    ExtendedWorkTicket(int number, String id, int day, int month, int year , String description, boolean isOpen)
     {
         super.SetWorkTicket(number, id, day, month, year, description);
         setOpen(isOpen);
     }
 
-    ExtentedWorkTicket(WorkTicket ticket, boolean isOpen)
+    // Parameterized constructor accepting WorkTicket object
+    ExtendedWorkTicket(WorkTicket ticket, boolean isOpen)
     {
         super(ticket);
         setOpen(isOpen);
     }
 
+    // Overloaded SetWorkTicket, including parameter myOpen
     public boolean SetWorkTicket(int number, String id, int day, int month, int year, String description, boolean isOpen)
     {
         boolean isValid = true;
@@ -59,6 +72,7 @@ public class ExtentedWorkTicket extends WorkTicket
         }
         else
         {
+            isOpen = closeTicket();
             isValid = false;
         }
         return isValid;
