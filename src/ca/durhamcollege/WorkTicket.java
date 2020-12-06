@@ -9,69 +9,91 @@
 package ca.durhamcollege;
 import java.time.DateTimeException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-public class WorkTicket
-{
+
+public class WorkTicket {
     // Private instance variables
-    private int ticketNumber;
-    private String clientId;
-    private LocalDate ticketDate;
-    private String issueDescription;
+    protected int ticketNumber;
+    protected String clientId;
+    protected LocalDate ticketDate;
+    protected String issueDescription;
+
     // Public properties
     // Accessors
-    public int getTicketNumber() { return ticketNumber;  }
-    public String getClientId() { return clientId; }
-    public LocalDate getTicketDate() { return ticketDate; }
-    public String getIssueDescription() { return issueDescription; }
+    public int getTicketNumber() {
+        return ticketNumber;
+    }
+
+    public String getClientId() {
+        return clientId;
+    }
+
+    public LocalDate getTicketDate() {
+        return ticketDate;
+    }
+
+    public String getIssueDescription() {
+        return issueDescription;
+    }
+
     // Mutators
-    public void setTicketNumber(int ticketNumber)
-    {
+    public void setTicketNumber(int ticketNumber) {
         this.ticketNumber = ValidateTicket(ticketNumber);
     }
-    public void setClientId(String clientId)
-    {
+
+    public void setClientId(String clientId) {
         this.clientId = clientId;
     }
-    public void setTicketDate( int day, int month, int year)
-    {
+
+    public void setTicketDate(int day, int month, int year) {
         //Formats Date
-        if(ValidateDate(day, month, year) == true)
-        {
+        if (ValidateDate(day, month, year) == true) {
             LocalDate ticketDate = LocalDate.of(year, month, day);
             this.ticketDate = ticketDate;
         }
     }
-    public void setIssueDescription(String issueDescription)
-    {
+
+    public void setIssueDescription(String issueDescription) {
         this.issueDescription = issueDescription;
     }
+
     // Mutator Method
-    void SetWorkTicket(int number, String id, int day, int month, int year, String description)
-    {
+    public void SetWorkTicket(int number, String id, int day, int month, int year, String description) {
         setTicketNumber(number);
         setClientId(id);
         setTicketDate(day, month, year);
         setIssueDescription(description);
     }
+
     // Default constructor
-    public WorkTicket()
-    {
+    public WorkTicket() {
         ticketNumber = 0;
         clientId = null;
         ticketDate = null;
         issueDescription = null;
     }
+
     // Parameterized constructor
-    WorkTicket(int number, String id, int day, int month, int year , String description)
-    {
+    WorkTicket(int number, String id, int day, int month, int year, String description) {
         SetWorkTicket(number, id, day, month, year, description);
     }
+
+    public WorkTicket(WorkTicket ticket)
+    {
+        this.ticketNumber = ticket.ticketNumber;
+        this.clientId = ticket.clientId;
+        this.issueDescription = ticket.issueDescription;
+        this.ticketDate = ticket.ticketDate;
+    }
+
     // Returns string that shows object's attributes
     @Override
     public String toString()
     {
-        return "\nTicket #\tClient ID\tWork Ticket Date\tIssue Description\n" +
-                ticketNumber + "\t\t\t" + clientId + "\t\t\t" + ticketDate + "\t\t\t" + issueDescription;
+        return "\nTicket #:           " + ticketNumber +
+                "\nClient ID:         " + clientId +
+                "\nWork Ticket Date:  " + ticketDate +
+                "\nIssue Description: " + issueDescription;
+
     }
 
 
