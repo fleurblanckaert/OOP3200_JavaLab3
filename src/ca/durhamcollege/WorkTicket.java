@@ -77,7 +77,7 @@ public class WorkTicket {
         SetWorkTicket(number, id, day, month, year, description);
     }
 
-    //
+    //Parameterized Constructor that takes in an object as it's parameter
     public WorkTicket(WorkTicket ticket)
     {
         this.ticketNumber = ticket.ticketNumber;

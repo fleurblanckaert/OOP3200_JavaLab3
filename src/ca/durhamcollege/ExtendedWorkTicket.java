@@ -51,7 +51,7 @@ public class ExtendedWorkTicket extends WorkTicket
         setOpen(isOpen);
     }
 
-    // Parameterized constructor accepting WorkTicket object
+    // Override Parameterized constructor that is accepting a WorkTicket object to also accept boolean isOpen
     ExtendedWorkTicket(WorkTicket ticket, boolean isOpen)
     {
         super(ticket);
